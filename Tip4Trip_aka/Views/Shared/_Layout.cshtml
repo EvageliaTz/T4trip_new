@@ -1,4 +1,86 @@
-﻿<!DOCTYPE html>
+﻿@*<!DOCTYPE html>
+    <html>
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>@ViewBag.Title - Tip4Trip - Your Vacation Friend</title>
+        @Styles.Render("~/Content/css")
+        @Scripts.Render("~/bundles/modernizr")
+        <link rel="apple-touch-icon" sizes="57x57" href="/apple-icon-57x57.png">
+        <link rel="apple-touch-icon" sizes="60x60" href="/apple-icon-60x60.png">
+        <link rel="apple-touch-icon" sizes="72x72" href="/apple-icon-72x72.png">
+        <link rel="apple-touch-icon" sizes="76x76" href="/apple-icon-76x76.png">
+        <link rel="apple-touch-icon" sizes="114x114" href="/apple-icon-114x114.png">
+        <link rel="apple-touch-icon" sizes="120x120" href="/apple-icon-120x120.png">
+        <link rel="apple-touch-icon" sizes="144x144" href="/apple-icon-144x144.png">
+        <link rel="apple-touch-icon" sizes="152x152" href="/apple-icon-152x152.png">
+        <link rel="apple-touch-icon" sizes="180x180" href="/apple-icon-180x180.png">
+        <link rel="icon" type="image/png" sizes="192x192" href="/android-icon-192x192.png">
+        <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+        <link rel="icon" type="image/png" sizes="96x96" href="/favicon-96x96.png">
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+        <link rel="manifest" href="/manifest.json">
+        <meta name="msapplication-TileColor" content="#ffffff">
+        <meta name="msapplication-TileImage" content="/ms-icon-144x144.png">
+        <meta name="theme-color" content="#ffffff">
+    </head>
+    <body>
+        <nav class="navbar sticky-top navbar-expand-lg navbar-light bg-light">
+            <a href="@Url.Action(" Index", "Home" )">
+                <div src="" class="image-link"></div>
+            </a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="container" id="navbarSupportedContent">
+                <div class="collapse navbar-collapse ml-5 mx-auto" id="navbarSupportedContent">
+                    <ul class="navbar-nav mr-auto">
+                        <li class="nav-item m-lg-3">@Html.ActionLink("Home", "Index", "Home")</li>
+                        <li class="nav-item m-lg-3">@Html.ActionLink("About", "About", "Home")</li>
+                        <li class="nav-item m-lg-3">@Html.ActionLink("Contact", "Contact", "Home")</li>
+
+                        @if (User.Identity.IsAuthenticated)
+                        {
+                        <li class="nav-item m-lg-3"> @Html.ActionLink("Houses", "Index", "Houses")</li>
+                        <li class="nav-item m-lg-3">
+                            @Html.ActionLink("Reservations", "Index", "Reservations")
+                        </li>
+
+                        if (User.IsInRole("Admin"))
+                        {
+
+
+                        <li class="nav-item m-lg-3">
+                            @Html.ActionLink("Locations", "Index", "Locations")
+                        </li>
+
+                        <li class="nav-item m-lg-3">
+                            @Html.ActionLink("mazi", "mazi", "Houses", new { idilicious = 2 }, null)
+                        </li>
+                        }
+                        }
+                    </ul>
+                    @Html.Partial("_LoginPartial")
+                </div>*@
+@*<form class="form-inline my-2 my-lg-0">
+        <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+        <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+    </form>*@
+@*</div>
+        </nav>
+        <div class="container body-content">
+            @RenderBody()
+            <hr />
+            <footer>
+                <p>&copy; @DateTime.Now.Year - Tip4Trip App</p>
+            </footer>
+        </div>
+        @Scripts.Render("~/bundles/jquery")
+        @Scripts.Render("~/bundles/bootstrap")
+        @RenderSection("scripts", required: false)
+    </body>
+    </html>*@
+<!DOCTYPE html>
 <html>
 <head>
     <meta charset="utf-8" />
@@ -26,11 +108,12 @@
 </head>
 <body>
     <nav class="navbar sticky-top navbar-expand-lg navbar-light bg-light">
-        <a href="@Url.Action(" Index", "Home" )">
+        <a href="@Url.Action("Index", "Home")">
             <div src="" class="image-link"></div>
         </a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
+        <button class="navbar-toggler first-button" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+                aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <div class="animated-icon1"><span></span><span></span><span></span></div>
         </button>
         <div class="container" id="navbarSupportedContent">
             <div class="collapse navbar-collapse ml-5 mx-auto" id="navbarSupportedContent">
@@ -38,34 +121,30 @@
                     <li class="nav-item m-lg-3">@Html.ActionLink("Home", "Index", "Home")</li>
                     <li class="nav-item m-lg-3">@Html.ActionLink("About", "About", "Home")</li>
                     <li class="nav-item m-lg-3">@Html.ActionLink("Contact", "Contact", "Home")</li>
-
                     @if (User.Identity.IsAuthenticated)
                     {
-                    <li class="nav-item m-lg-3"> @Html.ActionLink("Houses", "Index", "Houses")</li>
-                    <li class="nav-item m-lg-3">
-                        @Html.ActionLink("Reservations", "Index", "Reservations")
-                    </li>
+                        <li> @Html.ActionLink("Houses", "Index", "Houses")</li>
+                        <li>
+                            @Html.ActionLink("Reservations", "Index", "Reservations")
+                        </li>
+                        if (User.IsInRole("Admin"))
+                        {
+                            <li>
+                                @Html.ActionLink("Locations", "Index", "Locations")
+                            </li>
 
-                    if (User.IsInRole("Admin"))
-                    {
-
-
-                    <li class="nav-item m-lg-3">
-                        @Html.ActionLink("Locations", "Index", "Locations")
-                    </li>
-
-                    <li class="nav-item m-lg-3">
-                        @Html.ActionLink("mazi", "mazi", "Houses", new { idilicious = 2 }, null)
-                    </li>
-                    }
+                            <li>
+                                @Html.ActionLink("mazi", "mazi", "Houses", new { idilicious = 2 }, null)
+                            </li>
+                        }
                     }
                 </ul>
                 @Html.Partial("_LoginPartial")
             </div>
             @*<form class="form-inline my-2 my-lg-0">
-                <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-                <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-            </form>*@
+                    <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+                    <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+                </form>*@
         </div>
     </nav>
     <div class="container body-content">
@@ -78,5 +157,19 @@
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/bootstrap")
     @RenderSection("scripts", required: false)
+    <script>
+    $(document).ready(function () {
+            $('.first-button').on('click', function () {
+                $('.animated-icon1').toggleClass('open');
+            });
+            $('.second-button').on('click', function () {
+
+                $('.animated-icon2').toggleClass('open');
+            });
+            $('.third-button').on('click', function () {
+
+                $('.animated-icon3').toggleClass('open');
+            });
+        });</script>
 </body>
 </html>
